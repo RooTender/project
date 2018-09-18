@@ -1,0 +1,37 @@
+<form onsubmit="return false">
+  <div class="form-group row">
+    <label for="pin" class="col-2 col-form-label">Pin code <b>[WIP]!!!</b>: </label>
+    <div class="col-8">
+      <input type="text" style="font-weight: bold;" [value]="generatedPIN" class="form-control" id="pinCode" placeholder="Your pin will be generated here..." readonly>
+    </div>
+    <button class="btn btn-primary inline" (click)="generatePIN()">Generate new</button>
+  </div>
+  <div class="form-group row">
+    <div class="col-12 text-center mt-5" style="min-height: 30em">
+      <h1 class="display-4">Pictures for game purposes</h1><hr>
+      <input type="text" #box class="form-control" placeholder="JSON data" (keyup)="choice(1, box.value)" [disabled]="this.manual"><br>
+      <div class="row">
+        <div class="col-8">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile" (change)="onFileSelected($event)" [disabled]="this.json">
+            <label class="custom-file-label" for="customFile">{{ fileName }}</label>
+          </div>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-primary w-100" (click)="onUpload()" [disabled]="this.json">Upload</button>
+        </div>
+      </div>
+      <hr>
+      <p>{{ Count }}</p>
+      <img *ngFor="let image of images" [src]="image" class="m-1" style="max-height: 20vh; max-width: 20vw;">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-6">
+      <button class="btn btn-danger btn-lg w-100">Dismiss</button>
+    </div>
+    <div class="col-6">
+        <button class="btn btn-success btn-lg w-100" [disabled]="!this.json && !this.manual" (click)="start()">Save & START</button>
+    </div>
+  </div>
+</form>

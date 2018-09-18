@@ -1,0 +1,16 @@
+<div class="d-flex align-items-center flex-column justify-content-center h-100 text-white main" [routerLink]="[ '/play' ]">
+    <h1 class="display-4">Who'd you rather?</h1>
+    <br/>
+    <form *ngIf="!isWaiting; else waitingRoom">
+        <!-- <div class="form-group">
+            <input class="form-control form-control-lg text-center" placeholder="Game PIN" type="text">
+        </div>
+        <div class="form-group">
+            <button class="form-control form-control-lg btn btn-dark btn-lg" (click)="join()">Join</button>
+        </div> -->
+    </form>
+    <ng-template #waitingRoom>
+        <h1>Waiting for others...</h1><br>
+        <button class="btn btn-danger btn-lg" (click)="leave()">Leave</button>
+    </ng-template>
+</div>
